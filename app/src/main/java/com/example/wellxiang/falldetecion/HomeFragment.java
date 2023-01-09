@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
             public void onCheckedChanged(SwitchButton view, boolean isChecked) {
                 if(view.isChecked()){
                     Intent startIntent = new Intent(getContext(), FallDetectionService.class);
-                    getContext().startService(startIntent);
+                    getContext().startForegroundService(startIntent);
                 }else{
                     Intent stopIntent = new Intent(getContext(), FallDetectionService.class);
                     getContext().stopService(stopIntent);

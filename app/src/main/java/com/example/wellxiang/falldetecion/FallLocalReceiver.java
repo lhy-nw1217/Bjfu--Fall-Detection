@@ -14,6 +14,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.WindowManager;
@@ -39,7 +40,7 @@ public class FallLocalReceiver extends BroadcastReceiver implements AMapLocation
     private SharedPreferences sharedPreferences;
     private Vibrator vibrator;
     private boolean isVibrate;
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer = new MediaPlayer();
 
     private AMapLocationClient locationClient;
     private AMapLocationClientOption locationClientOption;
@@ -92,12 +93,13 @@ public class FallLocalReceiver extends BroadcastReceiver implements AMapLocation
                 }
                 stopAlarm();
                 Intent startIntent = new Intent(context, FallDetectionService.class);
-                context.startService(startIntent);
+                context.startForegroundService(startIntent);
             }
         });
+
         dialog = builder.create();
         dialog.setCanceledOnTouchOutside(false);
-        dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
         countDown();
         dialog.show();
         Log.d(TAG, "dialog.create()");
@@ -129,8 +131,7 @@ public class FallLocalReceiver extends BroadcastReceiver implements AMapLocation
             super.handleMessage(msg);
             if(msg.arg1 > 0){
                 //动态显示倒计时
-                countingView.setText("                         "
-                        + msg.arg1 + "秒后自动报警");
+                countingView.setText("                         " + msg.arg1 + "秒后自动报警");
             }else{
                 //倒计时结束自动关闭
                 if(dialog != null){

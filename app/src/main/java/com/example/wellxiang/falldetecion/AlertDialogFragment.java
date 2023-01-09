@@ -43,30 +43,10 @@ public class AlertDialogFragment extends DialogFragment {
                     }
                 });
         alertDialog = builder.create();
-        alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
         alertDialog.setCanceledOnTouchOutside(false);
         countDown();
 
-//        handler = new Handler(){
-//            @Override
-//            public void handleMessage(Message msg) {
-//                if(msg.what > 0){
-//                    Log.v("time", msg.what + "");
-//                    //动态显示倒计时
-//                    textView.setText("                     " + msg.what + "秒后自动报警");
-//                }else{
-//                    //倒计时结束自动关闭
-//                    if(alertDialog != null){
-//                        alertDialog.dismiss();
-//                        Log.d("Shawn","alertDialog.dismiss()");
-//                    }
-//                    timer.cancel();
-//                    Log.d("Shawn", "timer.cancel()");
-//                }
-//            }
-//        };
-//        return alertDialog;
-//    }
 
         handler = new Handler(Looper.getMainLooper()) {
             @Override

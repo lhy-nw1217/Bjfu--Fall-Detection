@@ -1,8 +1,11 @@
 package com.example.wellxiang.falldetecion;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.BitmapFactory;
@@ -32,7 +35,7 @@ public class FallDetectionService extends Service {
     private IntentFilter intentFilter;
     private LocalBroadcastManager localBroadcastManager;
     private FallLocalReceiver fallLocalReceiver;
-
+    private static final String IMPORTANT_CHANNEL_ID = "FallDetected";
     public FallDetectionService() {
     }
 
@@ -45,8 +48,12 @@ public class FallDetectionService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG, "FallDetectionService.onCreate()");
+        NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
+        NotificationChannel Channel = new NotificationChannel(IMPORTANT_CHANNEL_ID,
+                "FallDetection",NotificationManager.IMPORTANCE_HIGH);
+        Log.d(TAG, "FallDetectionService.onCreate()");
+        //mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();//获得蓝牙实例
         fallSensorManager = new FallSensorManager(this);
         fallSensorManager.initSensor();
         fallSensorManager.registerSensor();
@@ -61,6 +68,9 @@ public class FallDetectionService extends Service {
         intentFilter.addAction("com.broadcast.FALL_LOCAL_BROADCAST");
         fallLocalReceiver = new FallLocalReceiver();
         localBroadcastManager.registerReceiver(fallLocalReceiver, intentFilter);
+
+        manager.createNotificationChannel(Channel);
+
     }
 
 
@@ -143,16 +153,28 @@ public class FallDetectionService extends Service {
      */
     private void showInNotification() {
         Intent intent = new Intent(this,MainActivity.class);
+        this.startForegroundService(intent);//安卓8.0以上开后台服务
         PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
-        Notification notification = new NotificationCompat.Builder(this,"default")
-                .setContentTitle("老人跌到检测")
-                .setContentText("老人跌倒检测正在运行")
+
+//        Notification.Builder builder = new Notification.Builder(this.getApplicationContext());
+//                 .setContentTitle("老人跌到检测")
+//                 .setWhen(System.currentTimeMillis())
+//                 .setContentText("老人跌倒检测正在运行")
+//                 .setSmallIcon(R.drawable.ic_app)
+//                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_app))
+//                 .setContentIntent(pi);
+
+
+        Notification notification = new NotificationCompat.Builder(this,"")
+                .setChannelId(IMPORTANT_CHANNEL_ID)
+               .setContentTitle("老人跌到检测")
+               .setContentText("老人跌倒检测正在运行")
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.drawable.ic_app)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_app))
                 .setContentIntent(pi)
                 .build();
-        startForeground(1,notification);
+                startForeground(1,notification);
     }
 
 }

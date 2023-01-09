@@ -26,6 +26,30 @@
 
 3.全局替换旧的函数和包支持（ed）
 
-4.debug，handler闪退（ing）
+​	重构-迁移到AndroidX-确认
+
+​	继续修改一切xml中使用旧支持的，例如抽屉类
+
+### 4. debug，handler闪退（ing）
+
+​	安卓8.0以上必须手动建立进程Channel，否则报错
+
+​	弹窗权限错误：Android: permission denied for window type 2038
+
+​	xml加入<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+```java
+ alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY)
+```
+
+ 给新的权限TYPE_APPLICATION_OVERLAY
+
+打开app的悬浮窗权限
+
+
+
+​	
+
+​	
 
 5.修改数据传入，使用外来蓝牙串口数据检测（todo）
