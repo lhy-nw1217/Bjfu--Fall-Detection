@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.example.wellxiang.falldetecion"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+    implementation files('libs/AMap3DMap_4.1.3_AMapLocation_3.2.0_20161208.jar')
+    //implementation 'com.google.android.material.navigation.NavigationView：1.0.0'
+    implementation 'androidx.drawerlayout:drawerlayout:1.0.0'
+    //implementation 'com.android.support:design:29.0.1'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation "androidx.drawerlayout:drawerlayout:1.1.1"
+
+
+}
