@@ -48,7 +48,10 @@
         android:requestLegacyExternalStorage="true">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="672b6740d91abfba8fed866914f337ab" />
+
+            android:value="d352ba813f6dc7e3d59ff9b660a55202" />
+
+
 
         <activity
             android:name=".MainActivity"
@@ -62,7 +65,9 @@
         </activity>
         <activity android:name=".MapActivity" />
 
-        <service android:name="com.amap.api.location.APSService" />
+        <service android:name="com.amap.api.location.APSService"/>
+
+
         <service
             android:name=".FallDetectionService"
             android:enabled="true"

@@ -22,6 +22,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //implementation files('C:\\Users\\lhy\\Desktop\\2022.9\\app2\\Fall-Detection-Android-master\\app\\libs\\AMap3DMap_9.5.0_AMapLocation_6.2.0_20221103.jar')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -30,12 +31,19 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.github.zcweng:switch-button:0.0.3@aar'
-    implementation files('libs/AMap3DMap_4.1.3_AMapLocation_3.2.0_20161208.jar')
+    //implementation files('libs/AMap3DMap_4.1.3_AMapLocation_3.2.0_20161208.jar')
     //implementation 'com.google.android.material.navigation.NavigationView：1.0.0'
     implementation 'androidx.drawerlayout:drawerlayout:1.0.0'
     //implementation 'com.android.support:design:29.0.1'
     implementation 'com.google.android.material:material:1.0.0'
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
+    //高德地图
+    implementation files('libs/AMap3DMap_9.5.0_AMapLocation_6.2.0_20221103.jar')
+    //implementation 'com.amap.api:location:6.2.0' //高德偷懒没更新合包信息
+    //implementation 'com.amap.api:3dmap:9.5.0'
+    //Google推荐的EasyPermission库
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
 
 
 }

@@ -194,7 +194,13 @@ public class FallLocalReceiver extends BroadcastReceiver implements AMapLocation
 
     private void startLocation(){
         Log.d(TAG, "FallLocalReceiver.startLocation()");
-        locationClient = new AMapLocationClient(context);
+        AMapLocationClient.updatePrivacyShow(context,true,true);
+        AMapLocationClient.updatePrivacyAgree(context,true);
+        try {
+            locationClient = new AMapLocationClient(context);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //初始化定位参数
         locationClientOption = new AMapLocationClientOption();
         //设置定位模式为AMapLocationMode.Hight_Accuracy，高精度模式。

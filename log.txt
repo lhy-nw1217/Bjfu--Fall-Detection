@@ -1,0 +1,31 @@
+2023-01-10 22:58:49.058 11760-11760/? E/USNET: USNET: appName: com.example.wellxiang.falldetecion
+2023-01-10 22:59:17.695 11760-11853/com.example.wellxiang.falldetecion E/liuweixiang: 跌倒了
+2023-01-10 22:59:17.695 11760-11845/com.example.wellxiang.falldetecion E/liuweixiang: 跌倒了
+2023-01-10 22:59:17.696 11760-11760/com.example.wellxiang.falldetecion E/liuweixiang: FELL
+2023-01-10 22:59:17.696 11760-11760/com.example.wellxiang.falldetecion E/liuweixiang: FELL
+2023-01-10 22:59:18.224 11760-11760/com.example.wellxiang.falldetecion E/AmapError: location Error, ErrCode:12, errInfo:缺少定位权限 请到http://lbs.amap.com/api/android-location-sdk/guide/utilities/errorcode/查看错误码说明.
+2023-01-10 22:59:18.270 11760-11760/com.example.wellxiang.falldetecion E/AmapError: location Error, ErrCode:12, errInfo:缺少定位权限 请到http://lbs.amap.com/api/android-location-sdk/guide/utilities/errorcode/查看错误码说明.
+2023-01-10 22:59:25.444 11760-11760/com.example.wellxiang.falldetecion E/AmapError: location Error, ErrCode:12, errInfo:缺少定位权限 请到http://lbs.amap.com/api/android-location-sdk/guide/utilities/errorcode/查看错误码说明.
+2023-01-10 22:59:26.825 11760-11760/com.example.wellxiang.falldetecion E/AndroidRuntime: FATAL EXCEPTION: main
+    Process: com.example.wellxiang.falldetecion, PID: 11760
+    java.lang.SecurityException: Sending SMS message: uid 10695 does not have android.permission.SEND_SMS.
+        at android.os.Parcel.createExceptionOrNull(Parcel.java:2438)
+        at android.os.Parcel.createException(Parcel.java:2422)
+        at android.os.Parcel.readException(Parcel.java:2405)
+        at android.os.Parcel.readException(Parcel.java:2347)
+        at com.android.internal.telephony.ISms$Stub$Proxy.sendTextForSubscriber(ISms.java:2076)
+        at android.telephony.SmsManager$1.onSuccess(SmsManager.java:657)
+        at android.telephony.SmsManager.sendResolverResult(SmsManager.java:1707)
+        at android.telephony.SmsManager.resolveSubscriptionForOperation(SmsManager.java:1668)
+        at android.telephony.SmsManager.sendTextMessageInternal(SmsManager.java:652)
+        at android.telephony.SmsManager.sendTextMessage(SmsManager.java:489)
+        at com.example.wellxiang.falldetecion.FallLocalReceiver.sendSMS(FallLocalReceiver.java:191)
+        at com.example.wellxiang.falldetecion.FallLocalReceiver.access$700(FallLocalReceiver.java:35)
+        at com.example.wellxiang.falldetecion.FallLocalReceiver$3.handleMessage(FallLocalReceiver.java:143)
+        at android.os.Handler.dispatchMessage(Handler.java:106)
+        at android.os.Looper.loopOnce(Looper.java:226)
+        at android.os.Looper.loop(Looper.java:313)
+        at android.app.ActivityThread.main(ActivityThread.java:8663)
+        at java.lang.reflect.Method.invoke(Native Method)
+        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:567)
+        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1135)

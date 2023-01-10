@@ -24,10 +24,7 @@ import android.view.MenuItem;
  * -    ██║   ██║  ██║██║███████║   ██║   ██║  ██║██║ ╚████║
  * -    ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝
  *
- * @ClassName MainActivity
- * @Description 主界面
- * @Date October 14, 2018 at 10:11:40 PM GMT+8
- * @Version 1.0
+ *
  */
 public class MainActivity extends AppCompatActivity {
 

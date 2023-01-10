@@ -168,9 +168,17 @@ public class MapActivity extends AppCompatActivity implements LocationSource, AM
     @Override
     public void activate(OnLocationChangedListener onLocationChangedListener) {
         mListener = onLocationChangedListener;
+
         if (mLocationClient == null) {
+            //强制开权限
+            AMapLocationClient.updatePrivacyShow(this,true,true);
+            AMapLocationClient.updatePrivacyAgree(this,true);
             //初始化定位
-            mLocationClient = new AMapLocationClient(this);
+            try {
+                mLocationClient = new AMapLocationClient(this);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             //初始化定位参数
             mLocationOption = new AMapLocationClientOption();
             //设置定位回调监听

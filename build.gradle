@@ -2,6 +2,7 @@
 
 buildscript {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/public'}
         maven() {
             url 'https://maven.aliyun.com/repository/jcenter'
         }
@@ -19,8 +20,9 @@ buildscript {
         }
 
 
-        mavenCentral()
-        google()
+        //mavenCentral()
+        //google()
+        //maven{ url'https://maven.aliyun.com/repository/google'}
 
         //jcenter()
     }
@@ -35,6 +37,7 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/public'}
         maven() {
             url 'https://maven.aliyun.com/repository/jcenter'
         }
@@ -52,10 +55,10 @@ allprojects {
         }
 
         mavenCentral ()
-        maven {url 'https://dl.bintray.com/jetbrains/anko'} //这是你需要加入的，这个是解决这个问题的关键地方，我就是添加这个maven后不再报上面的错误了
-        maven {url "https://maven.google.com"} //谷歌广告
-        google()
-
+        //maven {url 'https://dl.bintray.com/jetbrains/anko'} //这是你需要加入的，这个是解决这个问题的关键地方，我就是添加这个maven后不再报上面的错误了
+        //maven {url "https://maven.google.com"} //谷歌广告
+        //maven{ url'https://maven.aliyun.com/repository/google'}
+        //google()
         //jcenter()
     }
 }
