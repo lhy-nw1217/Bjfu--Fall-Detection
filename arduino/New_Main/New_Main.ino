@@ -126,7 +126,7 @@ void setup() {
   MsTimer2::start();
   //控制灯
   int i;
-  for( i = 2 ; i < 6 ; i++ )
+  for( i = 2 ; i < 6 ; i++ )//D5 扬声器
     {
         pinMode(i,OUTPUT);
         digitalWrite(i,HIGH);    // set led control pin defalut HIGH turn off all LED and 
@@ -165,9 +165,9 @@ void loop() {
     if(a>150){ 
       digitalWrite(5,LOW); //打开扬声器
 
-      if(xGyro>yGyro && xGyro>zGyro) {digitalWrite(4,LOW);digitalWrite(3,HIGH);digitalWrite(2,HIGH); delay(500);flag = 0;};//4red
-      if(yGyro>zGyro && yGyro>zGyro) {digitalWrite(3,LOW);digitalWrite(4,HIGH);digitalWrite(2,HIGH); delay(500);flag = 0;};//3orange
-      if(zGyro>yGyro && zGyro>xGyro) {digitalWrite(2,LOW);digitalWrite(3,HIGH);digitalWrite(4,HIGH); delay(500);flag = 0;};//2blue
+      if(xGyro>yGyro && xGyro>zGyro) {digitalWrite(4,LOW);digitalWrite(3,HIGH);digitalWrite(2,HIGH); delay(1000);flag = 0;};//4red
+      if(yGyro>zGyro && yGyro>zGyro) {digitalWrite(3,LOW);digitalWrite(4,HIGH);digitalWrite(2,HIGH); delay(1000);flag = 0;};//3orange
+      if(zGyro>yGyro && zGyro>xGyro) {digitalWrite(2,LOW);digitalWrite(3,HIGH);digitalWrite(4,HIGH); delay(1000);flag = 0;};//2blue
     }
     else{digitalWrite(2,HIGH);digitalWrite(3,HIGH);digitalWrite(4,HIGH);digitalWrite(5,HIGH);flag = 0;}
   }

@@ -141,6 +141,7 @@ public class FallLocalReceiver extends BroadcastReceiver implements AMapLocation
                     }
                     stopAlarm();
                     sendSMS(locationAddress, locationTime);
+                    return;
                 }
                 timer.cancel();
             }
@@ -190,7 +191,10 @@ public class FallLocalReceiver extends BroadcastReceiver implements AMapLocation
         String smsContent = time + name + "在" + address + "发生跌倒了！";
         smsManager.sendTextMessage(phoneNum, null, smsContent ,null, null);
         Toast.makeText(context, "短信已经发出", Toast.LENGTH_SHORT).show();
+
     }
+
+
 
     private void startLocation(){
         Log.d(TAG, "FallLocalReceiver.startLocation()");

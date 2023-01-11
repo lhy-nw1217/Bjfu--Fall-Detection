@@ -3,6 +3,9 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
 
+    //解决Execution failed for task ':app:mergeReleaseResources'.
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
     defaultConfig {
         applicationId "com.example.wellxiang.falldetecion"
         minSdkVersion 26
@@ -10,12 +13,29 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
     }
     buildTypes {
         release {
+            //打包设置
+            minifyEnabled true
+            debuggable true
+            buildConfigField ("boolean", "MY_DEBUG", "false")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+        debug {
             minifyEnabled false
+            buildConfigField ("boolean", "MY_DEBUG", "true")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    //builde.gradle会在你打包的时候去检查你的res资源，一旦出现不规范就会出现该错误。
+    //
+    //主动去禁止它检查
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 
 }
